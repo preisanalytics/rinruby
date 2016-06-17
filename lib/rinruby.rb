@@ -179,7 +179,7 @@ class RinRuby
     cmd = "#{executable} --slave"
 
     # spawn R process
-    @engine = IO.popen(cmd, "w+")
+    @engine = IO.popen(cmd, "w+", :err=>[:child, :out])
     @reader = @engine
     @writer = @engine
     raise "Engine closed" if @engine.closed?
